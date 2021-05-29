@@ -1,21 +1,28 @@
 package hrms.hrms.entities.concretes;
 
+import java.time.LocalDate;
+
 import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="candidates")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Candidate {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
@@ -32,19 +39,8 @@ public class Candidate {
 	private String nationalIdentity;
 	
 	@Column(name="birth_date")
-	private String birthDate;
+	private LocalDate birthDate;
 	
-	public Candidate() {}
-	
-	
-	public Candidate(int id, int userId, String firstName, String lastName, String nationalIdentity, String birthDate) {
-		super();
-		this.id = id;
-		this.userId = userId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.nationalIdentity = nationalIdentity;
-		this.birthDate = birthDate;
-	}
+
 	
 }
