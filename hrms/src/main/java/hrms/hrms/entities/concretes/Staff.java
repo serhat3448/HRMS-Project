@@ -1,8 +1,5 @@
 package hrms.hrms.entities.concretes;
 
-import java.time.LocalDate;
-
-import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,12 +11,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name="candidates")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Candidate {
+@Entity
+@Table(name="staffs")
+public class Staff {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,14 +30,6 @@ public class Candidate {
 	private String firstName;
 	
 	@Column(name="last_name")
-	private String lastName;
-	
-	@Column(name="national_identity")
-	private String nationalIdentity;
-	
-	@Column(name="birth_date")
-	private LocalDate birthDate;
-	
-
+	private String LastName;
 	
 }
