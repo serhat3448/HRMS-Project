@@ -66,5 +66,36 @@ public class JobAdvertManager implements JobAdvertService {
 		return false;
 	}
 
+	@Override
+	public Result changeOpenToClose(int id) {
+		if (getById(id) == null) {
+			return new ErrorResult("There is no such job advert");
+
+		}
+		if (getById(id).getData().isOpen() == false) {
+			return new ErrorResult("There job advert is already closed.");
+		}
+
+		JobAdvert jobAdvert = getById(id).getData();
+		jobAdvert.setOpen(false);
+		update(jobAdvert);
+		return new SuccessResult("Job advert has been successfully closed.");
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> getAllOpenJobAdvertList() {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getAllOpenJobAdvertList());
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> findAllByOrderByPublishedAt() {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.findAllByOrderByPublishedAtDesc());
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> getAllOpenJobAdvertByEmployer(int id) {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getAllOpenJobAdvertByEmployer(id));
+	}
+
 
 }
