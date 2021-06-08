@@ -45,5 +45,31 @@ public class Jobseeker extends User{
 	@Column(name = "is_verified", columnDefinition = "boolean default false")
 	private boolean isVerified = false;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobseeker")
+	private List<SchoolForCV> schools;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobseeker")
+	private List<ProgrammingSkillForCV> programingSkills;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobseeker")
+	private List<LinkForCV> links;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobseeker")
+	private List<ForeignLanguageForCV> languages;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobseeker")
+	private List<ExperienceForCV> experiences;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobseeker")
+	private List<CoverLetterForCV> coverLetters;	
 
+	@JsonIgnore
+	@OneToOne(mappedBy = "jobseeker", optional=false, fetch=FetchType.LAZY)
+	private ImageForCV image;
 }

@@ -13,6 +13,7 @@ import hrms.hrms.core.utilities.results.Result;
 import hrms.hrms.core.utilities.results.SuccessResult;
 import hrms.hrms.dataAccess.abstracts.JobseekerDao;
 import hrms.hrms.entities.concretes.Jobseeker;
+import hrms.hrms.entities.dtos.JobSeekerCVDto;
 import net.bytebuddy.asm.Advice.This;
 
 @Service
@@ -58,6 +59,8 @@ public class JobseekerManager implements JobseekerService {
 	public DataResult<Jobseeker> getJobseekerByNationalId(String nationalId) {
 		return new SuccessDataResult<Jobseeker>(this.jobseekerDao.findJobseekerByNationalId(nationalId));
 	}
+
+
 
 	
 
