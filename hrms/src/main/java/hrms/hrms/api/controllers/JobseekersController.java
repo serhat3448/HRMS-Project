@@ -14,6 +14,7 @@ import hrms.hrms.business.abstracts.JobseekerService;
 import hrms.hrms.core.utilities.results.DataResult;
 import hrms.hrms.core.utilities.results.Result;
 import hrms.hrms.entities.concretes.Jobseeker;
+import hrms.hrms.entities.dtos.JobSeekerCVDto;
 
 
 @RestController
@@ -53,6 +54,10 @@ public class JobseekersController {
 		return this.jobseekerService.getAll();
 	}
 	
+	@GetMapping("/getJobseekerCVById")
+	public DataResult<JobSeekerCVDto> getJobseekerCVById(@RequestParam int id){
+		return this.jobseekerService.getJobseekerCVById(id);
+	}
 
 	
 }

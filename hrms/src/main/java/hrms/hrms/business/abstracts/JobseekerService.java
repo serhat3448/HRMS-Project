@@ -16,5 +16,6 @@ public interface JobseekerService {
 	
 	DataResult<List<Jobseeker>> getAll();
 	DataResult<Jobseeker> getJobseekerByNationalId(String nationalId);
+	DataResult<JobSeekerCVDto> getJobseekerCVById(int id);
 
 }
