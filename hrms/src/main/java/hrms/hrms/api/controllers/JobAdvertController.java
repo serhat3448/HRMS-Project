@@ -3,6 +3,7 @@ package hrms.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import hrms.hrms.business.abstracts.JobAdvertService;
 import hrms.hrms.core.utilities.results.DataResult;
 import hrms.hrms.core.utilities.results.Result;
 import hrms.hrms.entities.concretes.JobAdvert;
+import hrms.hrms.entities.dtos.JobAdvertAddDto;
 
 @RestController
 @RequestMapping("/api/jobadvert")
@@ -30,11 +32,11 @@ public class JobAdvertController {
 	}
 
 	
-	@PostMapping("/add")
+	//@PostMapping("/add")
 	
-	public Result add(@RequestBody JobAdvert jobAdvert){
-		return this.jobAdvertService.add(jobAdvert);
-	}
+	//public Result add(@RequestBody JobAdvertAddDto jobAdvertAddDto){
+	//	return this.jobAdvertService.add(jobAdvertAddDto);
+	//}
 //	
 //	@PostMapping("/update")
 //	public Result update(@RequestBody JobAdvert jobAdvert){
@@ -71,8 +73,21 @@ public class JobAdvertController {
 		return this.jobAdvertService.findAllByOrderByPublishedAt();
 	}
 	
-	@GetMapping("/getAllOpenJobAdvertByEmployer")
-	public DataResult<List<JobAdvert>> getAllOpenJobAdvertByEmployer(@RequestParam int id){
-		return this.jobAdvertService.getAllOpenJobAdvertByEmployer(id);
-	}
+	
+
+	
+	@PostMapping("/create")
+    public ResponseEntity<?> create(@RequestBody JobAdvertAddDto jobAdvertAddDto){
+        Result result=this.jobAdvertService.create(jobAdvertAddDto);
+        if(result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+	
+	@GetMapping("/getAllByEmployerId")
+    public DataResult<List<JobAdvert>> getAllByEmployerId(@RequestParam int id){
+        return this.jobAdvertService.getAllByEmployerId(id);
+    };
+
 }

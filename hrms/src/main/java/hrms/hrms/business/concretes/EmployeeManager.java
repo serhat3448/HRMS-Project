@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import hrms.hrms.business.abstracts.EmployeeService;
 import hrms.hrms.core.utilities.results.DataResult;
+import hrms.hrms.core.utilities.results.Result;
 import hrms.hrms.core.utilities.results.SuccessDataResult;
+import hrms.hrms.core.utilities.results.SuccessResult;
 //import hrms.hrms.core.utilities.results.Result;
 //import hrms.hrms.core.utilities.results.SuccessResult;
 import hrms.hrms.dataAccess.abstracts.EmployeeDao;
@@ -24,33 +26,20 @@ public class EmployeeManager implements EmployeeService{
 		this.employeeDao = employeeDao;
 	}
 
-//	@Override
-//	public Result add(Employee employee) {
-//		this.employeeDao.save(employee);
-//      return new SuccessResult("Employee has been added.");		
-//	}
-//
-//	@Override
-//	public Result update(Employee employee) {
-//		this.employeeDao.save(employee);
-//      return new SuccessResult("Employee has been updated.");
-//	}
-//
-//	@Override
-//	public Result delete(int id) {
-//		this.employeeDao.deleteById(id);
-//      return new SuccessResult("Employee has been deleted.");
-//	}
-//
-//	@Override
-//	public DataResult<Employee> getById(int id) {
-//		return new SuccessDataResult<Employee>(this.employeeDao.getById(id));
-//	}
+	@Override
+	public Result add(Employee employee) {
+		this.employeeDao.save(employee);
+     return new SuccessResult("Employee has been added.");		
+	}
+
+
 
 	@Override
 	public DataResult<List<Employee>> getAll() {
 		// TODO Auto-generated method stub
 		return new SuccessDataResult<List<Employee>>(this.employeeDao.findAll());
 	}
+
+
 
 }

@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,15 +21,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class JobAdvert extends Base{
 
-	
-//	@Column(name = "job_position_id")
-//	private int jobPositionId;
-	
-//	@Column(name = "employer_id")
-//	private int employerId;
-	
-//	@Column(name = "city_id")
-//	private int cityId;
 	
 	@Column(name = "description")
 	private String description;
@@ -45,6 +38,7 @@ public class JobAdvert extends Base{
 	private LocalDate deadline;
 	
 	@Column(name = "published_at")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDate publishedAt;
 	
 	@Column(name = "is_open")
@@ -61,5 +55,14 @@ public class JobAdvert extends Base{
 	@ManyToOne
 	@JoinColumn(name = "city_id")
 	private City city;
+	
+	@ManyToOne()
+    @JoinColumn(name = "workplace_id")
+    private WorkPlace workPlace;
+
+    @ManyToOne()
+    @JoinColumn(name = "work_time_id")
+    private WorkTime workTime;
+
 
 }

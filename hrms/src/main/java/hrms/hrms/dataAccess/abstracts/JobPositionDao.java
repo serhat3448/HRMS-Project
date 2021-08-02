@@ -6,6 +6,7 @@ import hrms.hrms.entities.concretes.JobPosition;
 
 public interface JobPositionDao extends JpaRepository<JobPosition, Integer>{
 
-	JobPosition findByJobTitle(String title);
 	JobPosition getById(int id);
+	JobPosition findByJobTitle(String title);
+	
 }

@@ -45,10 +45,10 @@ public class JobPositionsController {
 //		return this.jobPositionService.delete(id);
 //	}
 //	
-//	@GetMapping("/getbyid")
-//	public DataResult<JobPosition> getById(@RequestParam("id") int id){
-//		return this.jobPositionService.getById(id);
-//	}
+	@GetMapping("/getbyid")
+	public DataResult<JobPosition> getById(@RequestParam("id") int id){
+		return this.jobPositionService.getById(id);
+	}
 	
 	@GetMapping("/getall")
 	public DataResult<List<JobPosition>> getAll(){

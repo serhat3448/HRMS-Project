@@ -25,10 +25,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Jobseeker extends User{
 
-//	@Id
-//	@GeneratedValue
-//	@Column(name= "user_id")
-//	private int userId;
 	
 	@Column(name= "first_name")
 	private String firstName;
@@ -70,6 +66,6 @@ public class Jobseeker extends User{
 	private List<CoverLetterForCV> coverLetters;	
 
 	@JsonIgnore
-	@OneToOne(mappedBy = "jobseeker", optional=false, fetch=FetchType.LAZY)
+	@OneToOne(mappedBy = "jobseeker", optional=true, fetch=FetchType.LAZY)
 	private ImageForCV image;
 }

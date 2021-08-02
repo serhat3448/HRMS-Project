@@ -47,10 +47,10 @@ public class JobPositionManager implements JobPositionService{
 //      return new SuccessResult("Job position has been deleted.");
 //	}
 //
-//	@Override
-//	public DataResult<JobPosition> getById(int id) {
-//		return new SuccessDataResult<JobPosition>(this.jobPositionDao.getById(id));
-//	}
+	@Override
+	public DataResult<JobPosition> getById(int id) {
+		return new SuccessDataResult<JobPosition>(this.jobPositionDao.getById(id));
+	}
 
 	@Override
 	public DataResult<List<JobPosition>> getAll() {

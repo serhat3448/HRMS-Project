@@ -5,6 +5,8 @@ import java.util.List;
 import hrms.hrms.core.utilities.results.DataResult;
 import hrms.hrms.core.utilities.results.Result;
 import hrms.hrms.entities.concretes.User;
+import hrms.hrms.entities.dtos.UserLoginDto;
+import hrms.hrms.entities.dtos.UserLoginReturnDto;
 
 public interface UserService {
 
@@ -14,5 +16,6 @@ public interface UserService {
 //	DataResult<User> getById(int id);
 	
 	DataResult<List<User>> getAll();
-	DataResult<User> getUserByEmail(String email);
+	DataResult<User> getByEmail(String email);
+	DataResult<UserLoginReturnDto> login(UserLoginDto userLoginDto);
 }

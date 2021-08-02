@@ -9,7 +9,13 @@ import hrms.hrms.entities.concretes.Jobseeker;
 import hrms.hrms.entities.concretes.LinkForCV;
 import hrms.hrms.entities.concretes.ProgrammingSkillForCV;
 import hrms.hrms.entities.concretes.SchoolForCV;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobSeekerCVDto {
 
 	public Jobseeker jobseeker;

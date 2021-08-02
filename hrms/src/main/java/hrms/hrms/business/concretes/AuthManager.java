@@ -16,6 +16,8 @@ import hrms.hrms.core.verification.VerificationService;
 import hrms.hrms.entities.concretes.Employer;
 import hrms.hrms.entities.concretes.Jobseeker;
 import hrms.hrms.entities.concretes.VerificationCode;
+import hrms.hrms.entities.dtos.CandidateForRegisterDto;
+import hrms.hrms.entities.dtos.EmployerForRegisterDto;
 
 @Service
 public class AuthManager implements AuthService {
@@ -64,7 +66,7 @@ public class AuthManager implements AuthService {
 			return new ErrorResult("Passwords do not match.");
 		}
 
-		employerService.add(employer);
+		//employerService.add(employerForRegisterDto);
 		String code = verificationService.sendCode();
 		verificationCodeRecord(code, employer.getId(), employer.getEmail());
 		return new SuccessResult("Registration has been successfully completed");
@@ -95,7 +97,7 @@ public class AuthManager implements AuthService {
 		}
 
 		
-		jobseekerService.add(jobseeker);
+		//jobseekerService.add(jobseeker);
 		String code = verificationService.sendCode();
 		verificationCodeRecord(code, jobseeker.getId(), jobseeker.getEmail());
 		return new SuccessResult("Registration has been successfully completed");
@@ -146,7 +148,7 @@ public class AuthManager implements AuthService {
 
 	private boolean checkIfExistsTcNo(String nationalId) {
 
-		if (this.jobseekerService.getJobseekerByNationalId(nationalId).getData() == null) {
+		if (this.jobseekerService.getByNationalId(nationalId).getData() == null) {
 			return true;
 		}
 		return false;
@@ -166,7 +168,7 @@ public class AuthManager implements AuthService {
 
 	private boolean checkIfEmailExists(String email) {
 
-		if (this.userService.getUserByEmail(email).getData() == null) {
+		if (this.userService.getByEmail(email).getData() == null) {
 
 			return true;
 		}
