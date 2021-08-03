@@ -123,7 +123,7 @@ public class JobAdvertManager implements JobAdvertService {
         jobAdvert.setSalaryMin(jobAdvertAddDto.getSalaryMin());
         jobAdvert.setSalaryMax(jobAdvertAddDto.getSalaryMax());
         jobAdvert.setOpenPositionCount(jobAdvertAddDto.getOpenPositionCount());
-        jobAdvert.setActive(false);
+        //jobAdvert.setActive(false);
         jobAdvert.setCity(this.cityDao.getById(jobAdvertAddDto.getCityId()));
         jobAdvert.setEmployer(this.employerDao.getById(jobAdvertAddDto.getEmployerId()));
         jobAdvert.setJobPosition(this.jobPositionDao.getById(jobAdvertAddDto.getJobPositionId()));

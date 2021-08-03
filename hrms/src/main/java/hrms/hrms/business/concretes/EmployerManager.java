@@ -54,7 +54,7 @@ public class EmployerManager implements EmployerService{
            return new ErrorResult("Şirket adı 2 karakterden uzun olmalıdır");
        }
 
-       employer.setActive(false);
+       //employer.setActive(false);
 
        this.employerDao.save(employer);
 
