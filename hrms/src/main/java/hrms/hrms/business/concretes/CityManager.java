@@ -24,12 +24,12 @@ public class CityManager implements CityService{
 		this.cityDao = cityDao;
 	}
 	
-//	@Override
-//	public Result add(City city) {
-//		this.cityDao.save(city);
-//	    return new SuccessResult("City has been added.");
-//	}
-//
+	@Override
+	public Result add(City city) {
+		this.cityDao.save(city);
+	    return new SuccessResult("City has been added.");
+	}
+
 //	@Override
 //	public Result update(City city) {
 //		this.cityDao.save(city);

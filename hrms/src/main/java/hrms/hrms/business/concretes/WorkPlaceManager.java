@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import hrms.hrms.business.abstracts.WorkPlaceService;
 import hrms.hrms.core.utilities.results.DataResult;
+import hrms.hrms.core.utilities.results.Result;
 import hrms.hrms.core.utilities.results.SuccessDataResult;
+import hrms.hrms.core.utilities.results.SuccessResult;
 import hrms.hrms.dataAccess.abstracts.WorkPlaceDao;
 import hrms.hrms.entities.concretes.WorkPlace;
 
@@ -26,6 +28,13 @@ public class WorkPlaceManager implements WorkPlaceService{
 	@Override
 	public DataResult<List<WorkPlace>> getAll() {
 		return new SuccessDataResult<List<WorkPlace>>(this.workPlaceDao.findAll(),"Data listelendi");
+	}
+
+
+	@Override
+	public Result add(WorkPlace workPlace) {
+		this.workPlaceDao.save(workPlace);
+		return new SuccessResult("Workplace has been added.");
 	}
 
 }
