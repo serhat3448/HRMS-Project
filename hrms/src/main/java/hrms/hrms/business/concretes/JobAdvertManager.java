@@ -43,14 +43,6 @@ public class JobAdvertManager implements JobAdvertService {
 		this.workTimeDao = workTimeDao;
 	}
 
-	//@Override
-	//public Result add(JobAdvertAddDto jobAdvertAddDto) {
-	//	if (!CheckIfNullField(jobAdvertAddDto)) {
-	//		return new ErrorResult("You have entered missing information. Please fill in all fields.");
-	//	}
-	//	this.jobAdvertDao.saveAll(jobAdvertAddDto);
-	//	return new SuccessResult("Job advert has been added.");
-	//}
 
 	@Override
 	public Result update(JobAdvert jobAdvert) {

@@ -10,7 +10,6 @@ import hrms.hrms.entities.dtos.JobSeekerCVDto;
 
 public interface JobseekerService {
 
-	//Result add(Jobseeker jobseeker);
 	Result add(CandidateForRegisterDto candidateForRegisterDto);
 	Result update(Jobseeker jobseeker);
 	Result delete(int id);

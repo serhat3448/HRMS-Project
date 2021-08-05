@@ -3,6 +3,7 @@ package hrms.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,10 +16,13 @@ import hrms.hrms.business.abstracts.SchoolForCVService;
 import hrms.hrms.core.utilities.results.DataResult;
 import hrms.hrms.core.utilities.results.Result; 
 import hrms.hrms.entities.concretes.SchoolForCV;
+import hrms.hrms.entities.dtos.EmployerForRegisterDto;
+import hrms.hrms.entities.dtos.SchoolDto;
 
-@CrossOrigin
+
 @RestController
 @RequestMapping("/api/schools")
+@CrossOrigin
 public class SchoolsController {
 
 	private SchoolForCVService schoolForCVService;
@@ -30,8 +34,8 @@ public class SchoolsController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody SchoolForCV schoolForCV){
-		return this.schoolForCVService.add(schoolForCV);
+	public Result add(@RequestBody SchoolDto schoolDto){
+		return this.schoolForCVService.add(schoolDto);
 	}
 	
 	@PostMapping("/update")
@@ -39,15 +43,39 @@ public class SchoolsController {
 		return this.schoolForCVService.update(schoolForCV);
 	}
 	
-	@PostMapping("/delete")
+	/*
+	 *
+	 *	@PostMapping("/add")
+    public ResponseEntity<?> add(@RequestBody EmployerForRegisterDto employerForRegisterDto){
+        Result result=this.employerService.add(employerForRegisterDto);
+        if(result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+    
+    *
+    *	@PostMapping("/delete")
 	public Result delete(@RequestParam int id){
 		return this.schoolForCVService.delete(id);
+	}
+    */
+	
+	
+	@PostMapping("/delete")
+	public ResponseEntity<?> delete(@RequestParam int id){
+		Result result = this.schoolForCVService.delete(id);
+		if(result.isSuccess()) {
+			return ResponseEntity.ok(result);
+		}
+		return ResponseEntity.badRequest().body(result);
 	}
 	
 	@GetMapping("/getbyid")
 	public DataResult<SchoolForCV> getById(@RequestParam int id){
 		return this.schoolForCVService.getById(id);
 	}
+	
 	
 	@GetMapping("/getall")
 	public DataResult<List<SchoolForCV>> getAll(){

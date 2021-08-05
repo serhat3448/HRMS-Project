@@ -32,11 +32,7 @@ public class JobseekersController {
 		super();
 		this.jobseekerService = jobseekerService;
 	}
-		
-	//@PostMapping("/add")
-	//public Result add(@RequestBody Jobseeker jobseeker){
-	//	return this.jobseekerService.add(jobseeker);
-	//}
+
 	
 	@PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody CandidateForRegisterDto candidateForRegisterDto){
@@ -51,12 +47,12 @@ public class JobseekersController {
 //	public Result update(@RequestBody Jobseeker jobseeker){
 //		return this.jobseekerService.update(jobseeker);
 //	}
-//	
-//	@PostMapping("/delete")
-//	public Result delete(@RequestParam("id") int id){
-//		return this.jobseekerService.delete(id);
-//	}
-//	
+	
+	@PostMapping("/delete")
+	public Result delete(@RequestParam("id") int id){
+		return this.jobseekerService.delete(id);
+	}
+	
 	@GetMapping("/getbyid")
 	public DataResult<Jobseeker> getById(@RequestParam("id") int id){
 		return this.jobseekerService.getById(id);

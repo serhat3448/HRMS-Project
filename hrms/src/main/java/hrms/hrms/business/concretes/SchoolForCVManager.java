@@ -1,5 +1,6 @@
 package hrms.hrms.business.concretes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,23 +11,36 @@ import hrms.hrms.core.utilities.results.DataResult;
 import hrms.hrms.core.utilities.results.Result;
 import hrms.hrms.core.utilities.results.SuccessDataResult;
 import hrms.hrms.core.utilities.results.SuccessResult;
+import hrms.hrms.dataAccess.abstracts.JobseekerDao;
 import hrms.hrms.dataAccess.abstracts.SchoolForCVDao;
+import hrms.hrms.entities.concretes.JobAdvert;
 import hrms.hrms.entities.concretes.SchoolForCV;
+import hrms.hrms.entities.dtos.SchoolDto;
 
 @Service
 public class SchoolForCVManager implements SchoolForCVService{
 
 	private SchoolForCVDao schoolForCVDao;
+	private JobseekerDao jobseekerDao;
 		
 	@Autowired
-	public SchoolForCVManager(SchoolForCVDao schoolForCVDao) {
+	public SchoolForCVManager(SchoolForCVDao schoolForCVDao, JobseekerDao jobseekerDao) {
 		super();
 		this.schoolForCVDao = schoolForCVDao;
+		this.jobseekerDao = jobseekerDao;
 	}
 
 	@Override
-	public Result add(SchoolForCV schoolForCV) {
-		this.schoolForCVDao.save(schoolForCV);
+	public Result add(SchoolDto schoolDto) {
+		SchoolForCV schoolForCV=new SchoolForCV();
+        schoolForCV.setSchoolName(schoolDto.getSchoolName());
+        schoolForCV.setDepartment(schoolDto.getDepartment());
+        schoolForCV.setStartAt(schoolDto.getStartAt());
+        schoolForCV.setEndAt(schoolDto.getEndAt());
+        schoolForCV.setJobseeker(this.jobseekerDao.getById(schoolDto.getJobseeker_id()));
+
+        this.schoolForCVDao.save(schoolForCV);
+
 		return new SuccessResult("School has been added.");
 	}
 

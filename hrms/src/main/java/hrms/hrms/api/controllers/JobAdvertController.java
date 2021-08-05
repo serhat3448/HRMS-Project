@@ -31,12 +31,6 @@ public class JobAdvertController {
 		this.jobAdvertService = jobAdvertService;
 	}
 
-	
-	//@PostMapping("/add")
-	
-	//public Result add(@RequestBody JobAdvertAddDto jobAdvertAddDto){
-	//	return this.jobAdvertService.add(jobAdvertAddDto);
-	//}
 //	
 //	@PostMapping("/update")
 //	public Result update(@RequestBody JobAdvert jobAdvert){
